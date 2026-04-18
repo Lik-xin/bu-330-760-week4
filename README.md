@@ -23,6 +23,8 @@ Replace the placeholder below with your final video URL after recording:
 cp .env.example .env
 ```
 
+Keep your real API key only in `.env` and do not commit it to GitHub.
+
 The starter defaults to Google AI Studio:
 
 ```env
