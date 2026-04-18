@@ -34,19 +34,26 @@ def calculator_tool(expression: str) -> str:
     return calculate(expression)
 
 
-# TODO: Implement this tool by uncommenting the code below and replacing
-# the ... with your implementation. The tool should:
-#   1. Read products.json using json.load() (json is already imported above)
-#   2. If the product_name is in the catalog, return its price as a string
-#   3. If not found, return the list of available product names so the agent
-#      can try again with the correct name
-#
-# @agent.tool_plain
-# def product_lookup(product_name: str) -> str:
-#     """Look up the price of a product by name.
-#     Use this when a question asks about product prices from the catalog.
-#     """
-#     ...
+@agent.tool_plain
+def product_lookup(product_name: str) -> str:
+    """Look up the price of a product by name.
+    Use this when a question asks about product prices from the catalog.
+    """
+    with open("products.json", encoding="utf-8") as f:
+        products = json.load(f)
+
+    product_name = product_name.strip()
+
+    if product_name in products:
+        return str(products[product_name])
+
+    normalized_products = {name.lower(): name for name in products}
+    matched_name = normalized_products.get(product_name.lower())
+    if matched_name:
+        return str(products[matched_name])
+
+    available_products = ", ".join(products.keys())
+    return f"Product not found. Available products: {available_products}"
 
 
 def load_questions(path: str = "math_questions.md") -> list[str]:

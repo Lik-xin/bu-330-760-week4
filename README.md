@@ -1,20 +1,35 @@
-# Week 4 Starter: Math Agent
+# Week 4: Math Agent with Tool Use
 
-A ReAct agent that solves questions using tool calls.
+This project implements a ReAct-style math agent using `pydantic-ai`. The agent uses:
+
+- `calculator_tool` for arithmetic
+- `product_lookup` for reading prices from `products.json`
+
+The completed agent can answer all 8 questions in `math_questions.md`, including the catalog-price questions.
+
+## Walkthrough Video
+
+Replace the placeholder below with your final video URL after recording:
+
+`VIDEO_LINK_HERE`
 
 ## Setup
 
-1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) if you don't have it.
+1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/).
+2. Copy `.env.example` to `.env`.
+3. Add your API key to `.env`.
 
-2. Copy `.env.example` to `.env` and add your API key:
-   ```bash
-   cp .env.example .env
-   ```
-   Then edit `.env` and replace `your-key-here` with your key from [Google AI Studio](https://aistudio.google.com/apikey).
+```bash
+cp .env.example .env
+```
 
-   To use a different provider, change the `MODEL` variable in `agent.py` and set the matching key in `.env`.
+The starter defaults to Google AI Studio:
 
-3. Make sure `.env` is in your `.gitignore` so you don't commit your key.
+```env
+GOOGLE_API_KEY=your-key-here
+```
+
+If you want to use a different provider, update the `MODEL` value in `agent.py` and set the matching environment variable in `.env`.
 
 ## Run
 
@@ -22,14 +37,18 @@ A ReAct agent that solves questions using tool calls.
 uv run agent.py
 ```
 
-uv will install dependencies automatically on first run.
+The program prints the ReAct trace for each question:
 
-The agent will work through each question in `math_questions.md` and print the ReAct trace (Reason / Act / Result) for each one.
+- `Reason`
+- `Act`
+- `Result`
 
-## Files
+## Project Files
 
-- `agent.py` - the ReAct agent (this is the file you'll modify)
-- `calculator.py` - calculator tool
-- `products.json` - product catalog with prices
-- `math_questions.md` - the questions the agent solves
-- `.env.example` - template for your API key
+- `agent.py` - main ReAct agent and registered tools
+- `calculator.py` - calculator tool implementation
+- `products.json` - product catalog
+- `math_questions.md` - 8 assignment questions
+- `pyproject.toml` - project dependencies
+- `.env.example` - API key template
+- `.gitignore` - ignores `.env`, `.venv`, and cache files
