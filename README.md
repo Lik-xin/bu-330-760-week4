@@ -11,7 +11,7 @@ The completed agent can answer all 8 questions in `math_questions.md`, including
 
 Replace the placeholder below with your final video URL after recording:
 
-`VIDEO_LINK_HERE`
+`https://youtu.be/yrOldAFUN2w`
 
 ## Setup
 
