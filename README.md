@@ -26,7 +26,7 @@ cp .env.example .env
 The starter defaults to Google AI Studio:
 
 ```env
-GOOGLE_API_KEY=your-key-here
+GOOGLE_API_KEY=AIzaSyDWEKTvIPKwuywWnWs6OGPOvaNNW7oKts8
 ```
 
 If you want to use a different provider, update the `MODEL` value in `agent.py` and set the matching environment variable in `.env`.
